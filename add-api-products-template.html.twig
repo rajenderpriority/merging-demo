@@ -1,0 +1,75 @@
+{#
+/**
+ * @file
+ * Theme implementation to display add subscription (individual user-apps).
+ *
+ *
+ * Available variables:
+ *
+ * General utility variables:
+ * - base_path: The base URL path of the Drupal installation. Will usually be
+ *   "/" unless you have installed Drupal in a sub-directory.
+ * - is_front: A flag indicating if the current page is the front page.
+ * - logged_in: A flag indicating if the user is registered and signed in.
+ * - is_admin: A flag indicating if the user has permission to access
+ *   administration pages.
+ *
+ * Site identity:
+ * - front_page: The URL of the front page. Use this instead of base_path when
+ *   linking to the front page. This includes the language domain or prefix.
+ * - logo: The url of the logo image, as defined in theme settings.
+ * - site_name: The name of the site. This is empty when displaying the site
+ *   name has been disabled in the theme settings.
+ * - site_slogan: The slogan of the site. This is empty when displaying the site
+ *   slogan has been disabled in theme settings.
+ *
+ * Regions:
+ * - page.slideout: Items for the Slideout region.
+ * - page.header_top_highlighted_first: Items for the Header Top Highlighted First region.
+ * - page.header_top_highlighted_second: Items for the Header Top Highlighted Second region.
+ * - page.header_top_first: Items for the Header Top First region.
+ * - page.header_top_second: Items for the Header Top Second region.
+ * - page.header_first: Items for the Header First region.
+ * - page.header: Items for the Header Second region.
+ * - page.header_third: Items for the Header Third region.
+ * - page.banner: Items for the Banner region.
+ * - page.content_top: Items for the Content Top region.
+ * - page.content_top_highlighted: Items for the Content Top Highlighted region.
+ * - page.content: Items for the Content region.
+ * - page.sidebar_first: Items for the First Sidebar region.
+ * - page.sidebar_second: Items for the Second Sidebar region.
+ * - page.content_bottom_first: Items for the Content Bottom First region.
+ * - page.content_bottom_second: Items for the Content Bottom Second region.
+ * - page.featured_top: Items for the Featured Top region.
+ * - page.featured: Items for the Featured region.
+ * - page.featured_bottom: Items for the Featured Bottom region.
+ * - page.sub_featured: Items for the Sub Featured region.
+ * - page.breadcrumb: Items for the Breadcrumb region.
+ * - page.highlighted: Items for the Highlighted region.
+ * - page.footer_top_first: Items for the Footer Top First region.
+ * - page.footer_top_second: Items for the Footer Top Second region.
+ * - page.footer_first: Items for the Footer First region.
+ * - page.footer_second: Items for the Footer Second region.
+ * - page.footer_third: Items for the Footer Third region.
+ * - page.footer_fourth: Items for the Footer Fourth region.
+ * - page.footer_fifth: Items for the Footer Fifth region.
+ * - page.footer_bottom: Items for the Footer Bottom region.
+ * - page.sub_footer_first: Items for the Subfooter First region.
+ * - page.footer: Items for the Subfooter Second region.
+#}
+
+{{ form.form_build_id }}
+{{ form.form_token }}
+{{ form.form_id }}
+{{ attach_library('custom_checkboxes/custom_checkboxes') }}
+<h2 class="dashboard-with-apps-title" style = "margin-left:70px; color:#333E48; text-align: left; font: Bold 24px/33px Open Sans; letter-spacing: 0; opacity: 1;">Add API Product(s)</h2>
+<div class="divouter">
+<div class="container-fluid-products">
+
+  <div class="row">
+    {{form.checkboxproduct}}
+
+  </div>
+</div></div>
+<br>{{form.addProductButton}}<br>
+<div style = "margin-left:49.5%; margin-top:15px; color: #333E48;font-weight: 500; text-align: left; font: Regular 16px/22px Open Sans; letter-spacing: 0; height: 22px; opacity: 1;">Cancel</div>

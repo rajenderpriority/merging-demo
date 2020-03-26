@@ -1,0 +1,115 @@
+/**
+ * @file
+ * IE 11 browser styling for additional css for Drupal 8.
+ *
+ * Base color: #bb111a
+ */
+/* base: elements */
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  span.duplicate{
+    text-transform: none;
+  }
+  span.breadcrumb__item-separator.fa.fa-angle-right{
+    visibility: visible;
+  }
+  .breadcrumb__item:nth-child(1) a{
+    font: inherit;
+    color: #212121;
+    visibility: visible;
+  }
+  .header-container ul.menu li a{
+    text-transform: capitalize;
+  }
+  .header-container ul.nav.navbar-nav.menu.user-menu > li:nth-child(1) > a {
+    /*visibility: visible!important;*/
+    /*border: none;*/
+    /*color: transparent !important;*/
+  }
+  #superfish-account a[href='/app/#/register']{
+    visibility: visible!important;
+    /*color: transparent!important;*/
+    /*text-transform: capitalize;*/
+  }
+  body.user-logged-in #block-useraccountmenu #account-userlogout a,#superfish-account a[href='/app/#/login']{
+    text-transform: none;
+  }
+  #block-fromapitozbg .jumbotron-heading{
+    visibility: visible;
+  }
+  #block-useraccountmenu a{
+    text-transform: capitalize;
+  }
+
+  input[type="password"]::-ms-clear, input[type="password"]::-ms-reveal {
+    display: none;
+}
+.wrapper--status.approved{
+  width:auto!important;
+}
+.adminimal-admin-toolbar.page-node-type-api-reference-swaggers .tab-content{
+    margin-top: 25px;
+}
+.page-node-type-api-reference-swaggers .tab-content{
+  margin-top: 20px;
+  padding-top: 0px!important;
+}
+.page-node-type-api-reference-swaggers #version1, #version2{
+  background: #fff;
+}
+.efx-user-profile-page .password-suggestions.description {
+    top: auto!important;
+}
+.apiproductdocs-main-wrap{
+  max-width: 100%;
+}
+.path-products .background-image.background-image--attachment-fixed{
+  background-position-y: 50%;
+  background-size: cover;
+  background-attachment: inherit;
+}
+.gEfEiG{
+  padding: 10px 25px !important;
+}
+
+div.page-container.slideout-panel[style*="transform:translateX(300px);"] .header-container,
+div.page-container.slideout-panel[style*="transform: translateX(300px);"] .header-container {
+      left: 0;
+      transition: all .2s;
+  }
+
+div.page-container.slideout-panel[style*="transform:translateX(300px);"] .header-container,
+div.page-container.slideout-panel[style*="transform: translateX(300px);"] .header-container {
+      left: 300px;
+  }
+
+body:not(.user-logged-in)  ul.menu.user-menu li a[href='/app/#/register'] {
+    visibility: visible;
+    /*color: transparent !important;*/
+}
+
+.header-container ul.nav>li>a[href='/app/#/register']:hover {
+  /*border: none;*/
+}
+
+.container-fluid-products {
+  margin-right: 8%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 73vh;
+  margin-left: 6%;
+
+}
+
+
+@media(min-width: 768px) {
+  .site-name {
+    position: absolute;
+    top: 10px;
+    left: 160px;
+  }
+}
+
+
+
+}

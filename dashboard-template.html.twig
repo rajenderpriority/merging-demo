@@ -1,0 +1,137 @@
+{#
+/**
+ * @file
+ * Theme implementation to display add subscription (individual user-apps).
+ *
+ *
+ * Available variables:
+ *
+ * General utility variables:
+ * - base_path: The base URL path of the Drupal installation. Will usually be
+ *   "/" unless you have installed Drupal in a sub-directory.
+ * - is_front: A flag indicating if the current page is the front page.
+ * - logged_in: A flag indicating if the user is registered and signed in.
+ * - is_admin: A flag indicating if the user has permission to access
+ *   administration pages.
+ *
+ * Site identity:
+ * - front_page: The URL of the front page. Use this instead of base_path when
+ *   linking to the front page. This includes the language domain or prefix.
+ * - logo: The url of the logo image, as defined in theme settings.
+ * - site_name: The name of the site. This is empty when displaying the site
+ *   name has been disabled in the theme settings.
+ * - site_slogan: The slogan of the site. This is empty when displaying the site
+ *   slogan has been disabled in theme settings.
+ *
+ * Regions:
+ * - page.slideout: Items for the Slideout region.
+ * - page.header_top_highlighted_first: Items for the Header Top Highlighted First region.
+ * - page.header_top_highlighted_second: Items for the Header Top Highlighted Second region.
+ * - page.header_top_first: Items for the Header Top First region.
+ * - page.header_top_second: Items for the Header Top Second region.
+ * - page.header_first: Items for the Header First region.
+ * - page.header: Items for the Header Second region.
+ * - page.header_third: Items for the Header Third region.
+ * - page.banner: Items for the Banner region.
+ * - page.content_top: Items for the Content Top region.
+ * - page.content_top_highlighted: Items for the Content Top Highlighted region.
+ * - page.content: Items for the Content region.
+ * - page.sidebar_first: Items for the First Sidebar region.
+ * - page.sidebar_second: Items for the Second Sidebar region.
+ * - page.content_bottom_first: Items for the Content Bottom First region.
+ * - page.content_bottom_second: Items for the Content Bottom Second region.
+ * - page.featured_top: Items for the Featured Top region.
+ * - page.featured: Items for the Featured region.
+ * - page.featured_bottom: Items for the Featured Bottom region.
+ * - page.sub_featured: Items for the Sub Featured region.
+ * - page.breadcrumb: Items for the Breadcrumb region.
+ * - page.highlighted: Items for the Highlighted region.
+ * - page.footer_top_first: Items for the Footer Top First region.
+ * - page.footer_top_second: Items for the Footer Top Second region.
+ * - page.footer_first: Items for the Footer First region.
+ * - page.footer_second: Items for the Footer Second region.
+ * - page.footer_third: Items for the Footer Third region.
+ * - page.footer_fourth: Items for the Footer Fourth region.
+ * - page.footer_fifth: Items for the Footer Fifth region.
+ * - page.footer_bottom: Items for the Footer Bottom region.
+ * - page.sub_footer_first: Items for the Subfooter First region.
+ * - page.footer: Items for the Subfooter Second region.
+#}
+
+
+
+{% if form.dashboard.apps == 'true' %}
+<div class="apps-dashboard">
+<h2 class="dashboard-with-apps-title">My Apps Dashboard</h2>
+<div class="dashboard-with-apps-header">
+<li>Name<i class="fal fa-info-circle app-dashboard-label-info"><div class="dashboard-input-label-tooltip">
+<p class="dashboard-header-tooltip-text">Click an App Name to go to that application's page</p>
+</div></i></li>
+<li class="dashboard-header-li-second">Owner<i class="fal fa-info-circle app-dashboard-label-info"><div class="dashboard-input-label-tooltip">
+<p class="dashboard-header-tooltip-text">Someone else's name indicates apps you've been invited to collaborate on</p>
+</div></i></li>
+<li class="dashboard-header-li-third">Environment<i class="fal fa-info-circle app-dashboard-label-info"><div class="dashboard-input-label-tooltip">
+<p class="dashboard-header-tooltip-text">The application's current environment</p>
+</div></i></li>
+</div>
+<div class="dashboard-apps-list">
+{% for key in form.clientApps %}
+{% if key.clientAppDisplayName is defined %}
+<div>
+<li class="dashboard-app-name"><a href="/user/applications/{{key.clientAppId}}">{{ key.clientAppDisplayName }}</a></li>
+<li class="dashboard-owner">{{ key.clientAppOwnerName }}</li>
+<li class="dashboard-status">{{ key.environment }}</li>
+</div>
+{% endif %}
+{% endfor %}
+</div>
+</div>
+   
+{% else %}
+<div class="no-apps-dashboard">
+<h2 class="dashboard-welcome-text">Welcome to The Developer Center_</h2>
+<div class="app-dashboard-blocks">
+
+<div class="md-col-2"><a href="/products">
+<div class="application-page-icon"><i class="fal fa-search app-dashboard-icons"></i></div>
+<div class="application-page-block-description">Explore API Products</div></a>
+</div>
+
+<div class="application-page-block-arrow"></div>
+<div class="md-col-2"><div class="application-page-icon"><i class="fal fa-layer-plus app-dashboard-icons"></i></div><div class="application-page-block-description">Create</br>an App</div>
+<div class="dashboard-tooltip">
+<p class="dahsboard-tooltip-text">Create an app and connect products</p>
+<i></i>
+</div>
+</div>
+
+<div class="application-page-block-arrow"></div>
+<div class="md-col-2"><div class="application-page-icon"><i class="fal fa-code app-dashboard-icons"></i></div><div class="application-page-block-description">Test in Sandbox</div>
+<div class="dashboard-tooltip">
+<p class="dahsboard-tooltip-text">Once you created an app and connected products, you'll get an auto-generated access token for Sandbox testing</p>
+<i></i>
+</div>
+</div>
+
+<div class="application-page-block-arrow"></div>
+<div class="md-col-2"><div class="application-page-icon"><i class="fal fa-tachometer-fastest app-dashboard-icons"></i></div><div class="application-page-block-description">Access UAT/Test</div>
+<div class="dashboard-tooltip">
+<p class="dahsboard-tooltip-text">To promote your app from sandbox to our UAT environment, click "Promote to Test" to submit your request</p>
+<i></i>
+</div>
+</div>
+
+<div class="application-page-block-arrow"></div>
+<div class="md-col-2"><div class="application-page-icon"><i class="fal fa-rocket-launch app-dashboard-icons"></i></div><div class="application-page-block-description">Go Live</div>
+<div class="dashboard-tooltip">
+<p class="dahsboard-tooltip-text">Once you're satisfied with the tests, click "Promote to Live" to submit your request to Go Live</p>
+<i></i>
+</div>
+</div>
+
+</div></div>
+   
+{% endif %}
+
+{{ form }}
+

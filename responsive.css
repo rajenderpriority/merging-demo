@@ -1,0 +1,51 @@
+/**
+ * @file
+ * Responsive styling for additional css for Drupal 8.
+ *
+ *
+ */
+/* base: elements */
+@media screen and (min-width: 1366px) {
+
+}
+@media screen and (max-width: 1365px) {
+
+  .banner{
+    width: 100%;
+  }
+  .featured-contents{
+    width: 100%;
+  }
+  div#block-views-block-view-for-featured-product-block-1 {
+      margin-left: -15px!important;
+      margin-right: -15px!important;
+  }
+  .subfooter{
+    width: 100%;
+  }
+  #main-content{
+    width: 100%;
+  }
+  .header__section ul.menu{
+    /*top: 10px;*/
+    top: 30px;
+    position: relative;
+    left: 300px;
+  }
+  .header-top{
+    padding: 0px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+
+}
+@media screen and (max-width: 640px) {
+
+}
+@media screen and (max-width: 480px) {
+
+}
+@media screen and (max-width: 320px) {
+
+}

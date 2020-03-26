@@ -1,0 +1,148 @@
+{#
+/**
+ * @file
+ * Theme implementation to display add subscription (individual user-apps).
+ *
+ *
+ * Available variables:
+ *
+ * General utility variables:
+ * - base_path: The base URL path of the Drupal installation. Will usually be
+ *   "/" unless you have installed Drupal in a sub-directory.
+ * - is_front: A flag indicating if the current page is the front page.
+ * - logged_in: A flag indicating if the user is registered and signed in.
+ * - is_admin: A flag indicating if the user has permission to access
+ *   administration pages.
+ *
+ * Site identity:
+ * - front_page: The URL of the front page. Use this instead of base_path when
+ *   linking to the front page. This includes the language domain or prefix.
+ * - logo: The url of the logo image, as defined in theme settings.
+ * - site_name: The name of the site. This is empty when displaying the site
+ *   name has been disabled in the theme settings.
+ * - site_slogan: The slogan of the site. This is empty when displaying the site
+ *   slogan has been disabled in theme settings.
+ *
+ * Regions:
+ * - page.slideout: Items for the Slideout region.
+ * - page.header_top_highlighted_first: Items for the Header Top Highlighted First region.
+ * - page.header_top_highlighted_second: Items for the Header Top Highlighted Second region.
+ * - page.header_top_first: Items for the Header Top First region.
+ * - page.header_top_second: Items for the Header Top Second region.
+ * - page.header_first: Items for the Header First region.
+ * - page.header: Items for the Header Second region.
+ * - page.header_third: Items for the Header Third region.
+ * - page.banner: Items for the Banner region.
+ * - page.content_top: Items for the Content Top region.
+ * - page.content_top_highlighted: Items for the Content Top Highlighted region.
+ * - page.content: Items for the Content region.
+ * - page.sidebar_first: Items for the First Sidebar region.
+ * - page.sidebar_second: Items for the Second Sidebar region.
+ * - page.content_bottom_first: Items for the Content Bottom First region.
+ * - page.content_bottom_second: Items for the Content Bottom Second region.
+ * - page.featured_top: Items for the Featured Top region.
+ * - page.featured: Items for the Featured region.
+ * - page.featured_bottom: Items for the Featured Bottom region.
+ * - page.sub_featured: Items for the Sub Featured region.
+ * - page.breadcrumb: Items for the Breadcrumb region.
+ * - page.highlighted: Items for the Highlighted region.
+ * - page.footer_top_first: Items for the Footer Top First region.
+ * - page.footer_top_second: Items for the Footer Top Second region.
+ * - page.footer_first: Items for the Footer First region.
+ * - page.footer_second: Items for the Footer Second region.
+ * - page.footer_third: Items for the Footer Third region.
+ * - page.footer_fourth: Items for the Footer Fourth region.
+ * - page.footer_fifth: Items for the Footer Fifth region.
+ * - page.footer_bottom: Items for the Footer Bottom region.
+ * - page.sub_footer_first: Items for the Subfooter First region.
+ * - page.footer: Items for the Subfooter Second region.
+#}
+
+{{ form.form_build_id }}
+{{ form.form_token }}
+{{ form.form_id }}
+<p style= "display: none;">{{ form.updateClientAppSubmit }}</p>
+<p style= "display: none;">{{ form.subscription_details }}</p>
+<div class="client-app-title">
+<h3 class="clientApp-displayName-visible">{{ form.clientAppDisplayName }}
+{% if form.environment|lower == form.tier1 %}
+<i class="fas fa-edit updateClientAppButton"></i>
+{% else %}
+{% endif %}
+</h3>
+<div class="client-app-dashboard-env">
+<i class="fal fa-info-circle app-dashboard-label-info"><div class="dashboard-input-label-tooltip">
+<p class="dahsboard-input-label-tooltip-text">Your app is in the sandbox environment and can be tested using Sandbox Credentials when available.</p>
+</div></i>
+<p class="client-app-dashboard-status">{{ form.environmentPrefix }}</p>
+{% if form.environment == form.promotionTier1 %}
+{% set promotionEnvironment = form.promotionTier2 %}
+{% elseif form.environment == form.promotionTier2 %}
+{% set promotionEnvironment = form.promotionTier3 %}
+{% else %}
+{% set promotionEnvironment = undefined %}
+{% endif %}
+{% if form.emptyClientApp == false %}
+{% if form.pendingSubscription == false %}
+<p class="trigger-promotion" style="display: inline;background: #fff;padding: 11.5px 3px; cursor:pointer;">
+Promote to {{ promotionEnvironment }}<i class="far fa-long-arrow-alt-right promote-button" style="padding: 0 0px 0 10px;
+    color: #333E48; display: inline;"></i></p>
+{% endif %}
+{% endif %}
+</div>
+</div>
+
+<div class="client-app-description">
+{% if form.description|default %}
+<p class="clientApp-description-visible">{{ form.description }}</p>
+{% else %}
+<p class="clientApp-description-visible"><i class="fal fa-info-circle"></i>Include information about your application; ex. who it's for, what are the use cases</p>
+{% endif %}
+</div>
+
+{{ form.DisplayNameInput }}
+{{ form.DescriptionInput }}
+<div class="client-app-dashboard-blocks">
+<div class="client-app-dashboard-credentials">
+<div class="client-app-dashboard-title"><p>Credentials & Details</p>
+<div class="client-app-dashboard-tiers">
+{{ form.tier1_tab }}{{ form.tier2_tab }}{{ form.tier3_tab }}
+</div>
+{% if form.emptyClientApp == false %}
+<div class="tier1-no-credentials" style="display:none;"></div>
+{% else %}
+<div class="tier1-no-credentials"><i class="fal fa-info-circle"></i><p>Add API Product(s) to generate sandbox credentials.</p></div>
+{% endif %}
+</div>
+</div>
+
+
+
+<div class="client-app-dashboard-right-blocks">
+
+<div class="client-app-dashboard-products">
+<div class="client-app-dashboard-title"><p>API Products</p></div>
+{% if form.emptyClientApp == false %}
+<div class="client-app-dashboard-no-products" style="display:none;"></div>
+{% else %}
+<div class="client-app-dashboard-no-products">
+<p>You haven’t added any API Product(s) yet.</p>
+<div style="margin-left: 25px; padding-top: 14px;"><a class="client-app-dashboard-add-product" style="color:white;" href="/user/applications/{{ form.clientAppId }}/addApiProduct">Add API Product</a></div></div>
+{% endif %}
+</div>
+
+
+<div class="client-app-dashboard-collaborators">
+<div class="client-app-dashboard-title"><p>Collaborators</p>
+<i class="fal fa-info-circle app-dashboard-label-info"><div class="dashboard-input-label-tooltip">
+<p class="collaborator-label-tooltip-text">Collaborators can access, but not edit, your app details and credentials. You can add/remove collaborator(s) along your app's journey from Sandbox to Go Live</p>
+</div></i>
+</div>
+{{ form.addCollaborator }}
+</div>
+</div>
+
+<div class="promotion-primary" style="display:none;">
+	For {{ form.promotion_environment }} credentials, please promote to {{ form.promotion_environment }}
+	<div class="promotion-button">Promote to {{ form.promotion_environment_prefix }}</div> 
+</div>
